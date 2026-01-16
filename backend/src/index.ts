@@ -16,6 +16,7 @@ app.use("/hospitals", hospitalsRouter);
 app.use("/hospitals", proximityRouter);
 app.use("/ambulances", ambulancesRouter);
 
+//  to test server and redis connection
 app.get("/health", async (_req, res) => {
   const pong: string = await redis.ping();
   res.json({ ok: true, redis: pong });
@@ -29,7 +30,6 @@ async function start(): Promise<void> {
   }
 
   app.listen(port, () => {
-    // eslint-disable-next-line no-console
     console.log(`API running on http://localhost:${port}`);
   });
 }
