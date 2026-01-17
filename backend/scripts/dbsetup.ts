@@ -8,8 +8,8 @@ if (!url) throw new Error("DATABASE_URL missing");
 async function run(): Promise<void> {
   const pool = new Pool({ connectionString: url });
 
-  const schema = readFileSync("sql/001_schema.sql", "utf8");
-  const seed = readFileSync("sql/002_seed.sql", "utf8");
+  const schema = readFileSync("sql/schema.sql", "utf8");
+  const seed = readFileSync("sql/seed.sql", "utf8");
 
   await pool.query(schema);
   await pool.query(seed);
